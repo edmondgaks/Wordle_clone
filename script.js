@@ -362,17 +362,12 @@ document.addEventListener("DOMContentLoaded", () => {
             let letter = currSquare.innerText;
             if (wordToGuess.charAt(c)=== letter) {
                 currSquare.classList.add("red");
-                // alert("You won");
                 correct +=1;
-                console.log(c+'red');
             } else if (wordToGuess.includes(letter)) {
                 currSquare.classList.add("green");
-                correct +=1;
-                console.log(c+'green');
+                
             } else {
                 currSquare.classList.add("bg-stone-500");
-                correct +=1;
-                console.log(c+'black');
 
             }
             if (correct == width) {

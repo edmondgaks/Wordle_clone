@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 .red{
-    background-color: rgb(77 124 15);
+    background-color: rgb(34 197 94);
 }
 .green{
-    background-color: rgb(251 146 60);
+    background-color: rgb(245 158 11);
 }
 .border{
     border: 2px solid rgb(238, 235, 240);
