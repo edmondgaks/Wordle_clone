@@ -318,7 +318,7 @@ document.addEventListener("DOMContentLoaded", () => {
             for (let j = 0; j < width; j++) {
                 let square = document.createElement("div");
                 square.id = i.toString() + "-"+ j.toString();
-                square.setAttribute("class", "text-white border bg-white text-{80px} font-bold justify-center items-center");
+                square.setAttribute("class", "text-white border white font-bold justify-center items-center");
                 boxes.appendChild(square);
             }
         }
@@ -360,15 +360,20 @@ document.addEventListener("DOMContentLoaded", () => {
         for (let c = 0; c <width;c++) {
             let currSquare = document.getElementById(row.toString() + "-"+c.toString());
             let letter = currSquare.innerText;
-
-            if (wordToGuess[c] == letter) {
-                currSquare.classList.add("bg-lime-700");
-                alert("You won");
+            if (wordToGuess.charAt(c)=== letter) {
+                currSquare.classList.add("red");
+                // alert("You won");
                 correct +=1;
+                console.log(c+'red');
             } else if (wordToGuess.includes(letter)) {
-                currSquare.classList.add("bg-yellow-500");
+                currSquare.classList.add("green");
+                correct +=1;
+                console.log(c+'green');
             } else {
                 currSquare.classList.add("bg-stone-500");
+                correct +=1;
+                console.log(c+'black');
+
             }
             if (correct == width) {
                 gameOver = true;
