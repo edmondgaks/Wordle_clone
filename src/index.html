@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/dist/output.css" rel="stylesheet">
+  <link href="../style.css" rel="stylesheet">
+</head>
+<body class="bg-black">
+  <div class= "items-center">
+    <div class="h-14 border-b-2 border-white pb-1">
+      <h1 class="text-white text-2xl mx-80 px-60 translate-x-56 translate-y-5 font-black pb-2">Wordle</h1>
+    </div>
+    <div class="flex flex-col items-center">
+      <div id="boxes" class="board-container grid grid-cols-5 gap-x-2 gap-y-2  text-white w-80 h-80 mt-10"></div>
+
+      <div id="keyboard-container" class="h-52 text-white translate-y-[150px] ">
+        <div class="keyboard-row grid grid-flow-col gap-1 w-full touch-manipulation">
+          <button data-key="q" class="font-bold border-white p-6 bg-stone-500">Q</button>
+          <button data-key="w" class="font-bold  border-white p-6 bg-stone-500">w</button>
+          <button data-key="e" class="font-bold  border-white p-6 bg-stone-500">E</button>
+          <!-- <button data-key="e" class="font-bold  border-white p-6 bg-stone-500">E</button> -->
+          <button data-key="r" class="font-bold  border-white p-6 bg-stone-500">R</button>
+          <button data-key="t" class="font-bold  border-white p-6 bg-stone-500">T</button>
+          <button data-key="y" class="font-bold  border-white p-6 bg-stone-500">Y</button>
+          <button data-key="u" class="font-bold  border-white p-6 bg-stone-500">U</button>
+          <button data-key="i" class="font-bold  border-white p-6 bg-stone-500">I</button>
+          <button data-key="o" class="font-bold  border-white p-6 bg-stone-500">O</button>
+          <button data-key="p" class="font-bold  border-white p-6 bg-stone-500">P</button>
+        </div>
+        <div class="keyboard-row grid grid-flow-col gap-1">
+          <div class="spacer-half"></div>
+          <button data-key="a" class="font-bold  border-white p-6 bg-stone-500">A</button>
+          <button data-key="s" class="font-bold  border-white p-6 bg-stone-500">S</button>
+          <button data-key="d" class="font-bold  border-white p-6 bg-stone-500">D</button>
+          <button data-key="f" class="font-bold  border-white p-6 bg-stone-500">F</button>
+          <button data-key="g" class="font-bold  border-white p-6 bg-stone-500">G</button>
+          <button data-key="h" class="font-bold  border-white p-6 bg-stone-500">H</button>
+          <!-- <button data-key="j" class="font-bold  border-white p-6 bg-stone-500">H</button> -->
+          <button data-key="k" class="font-bold  border-white p-6 bg-stone-500">K</button>
+          <button data-key="l" class="font-bold  border-white p-6 bg-stone-500">L</button>
+          <div class="spacer-half"></div>
+        </div>
+        <div class="keyboard-row">
+          <button data-key="enter" class="wide-button font-bold  border-white p-6 bg-stone-500">Enter</button>
+          <button data-key="z" class="font-bold  border-white p-6 bg-stone-500">Z</button>
+          <button data-key="x" class="font-bold  border-white p-6 bg-stone-500">x</button>
+          <button data-key="c" class="font-bold  border-white p-6 bg-stone-500">C</button>
+          <button data-key="v" class="font-bold  border-white p-6 bg-stone-500">V</button>
+          <button data-key="b" class="font-bold  border-white p-6 bg-stone-500">B</button>
+          <button data-key="n" class="font-bold  border-white p-6 bg-stone-500">N</button>
+          <button data-key="m" class="font-bold  border-white p-6 bg-stone-500">M</button>
+          <button data-key="del" class="wide-button font-bold  border-white p-6 bg-stone-500">Del</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="../script.js"></script>
+</body>
+</html>
