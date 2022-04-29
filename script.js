@@ -298,13 +298,12 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
    
-    let num = Math.round(Math.random() * 292);
+    let num = Math.round(Math.random() * wordsToGuess.length);
     
 
     let wordToGuess = wordsToGuess[num].toUpperCase();
     console.log(wordToGuess);
 
-    var word = "SQUID";
     var height = 6;
     var width = 5;
     var row = 0;
