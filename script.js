@@ -312,7 +312,6 @@ document.addEventListener("DOMContentLoaded", () => {
     var gameOver = false;
 
  
-    // let userword = [];
     function createSquares() {
         const boxes = document.getElementById("boxes");
 
@@ -320,7 +319,6 @@ document.addEventListener("DOMContentLoaded", () => {
             for (let j = 0; j < width; j++) {
                 let square = document.createElement("div");
                 square.id = i.toString() + "-"+ j.toString();
-                // square.textContent = userword[i];
                 square.setAttribute("class", "text-white border bg-white text-{80px} font-bold justify-center items-center");
                 boxes.appendChild(square);
             }
@@ -331,7 +329,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("keyup", (e) => {
         if (gameOver) return;
 
-        // alert(e.code);
         if ("KeyA" <= e.code && e.code <= "KeyZ") {
             if(col < width) {
                 let currSquare = document.getElementById(row.toString() + "-"+col.toString());
