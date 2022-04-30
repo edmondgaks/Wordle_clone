@@ -310,7 +310,14 @@ document.addEventListener("DOMContentLoaded", () => {
     var col = 0;
     var gameOver = false;
 
- 
+
+    
+    const keys = document.querySelectorAll(".keyboard-row button");
+    console.log(keys)
+    // const squares = document.querySelectorAll(".square");
+    // console.log(squares);
+
+
     function createSquares() {
         const boxes = document.getElementById("boxes");
 
@@ -357,21 +364,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function update() {
         let correct = 0;
+        let letterCount = {};
+        for (let i =0; i<wordToGuess.length; i++) {
+            letter = wordToGuess[i];
+            if (letterCount[letter]) {
+                letterCount[letter] += 1;
+            } else {
+                letterCount[letter] = 1;
+            }
+        }
+        // first iteration, check all correct ones
         for (let c = 0; c <width;c++) {
             let currSquare = document.getElementById(row.toString() + "-"+c.toString());
             let letter = currSquare.innerText;
             if (wordToGuess.charAt(c)=== letter) {
                 currSquare.classList.add("red");
                 correct +=1;
-            } else if (wordToGuess.includes(letter)) {
-                currSquare.classList.add("green");
-                
-            } else {
-                currSquare.classList.add("bg-stone-500");
-
-            }
+                letterCount[letter] -= 1;
+            } 
             if (correct == width) {
                 gameOver = true;
+            }
+        }
+
+        // go again and mark which ones are present 
+        for (let c = 0; c <width;c++) {
+            let currSquare = document.getElementById(row.toString() + "-"+c.toString());
+            let letter = currSquare.innerText;
+            if(!currSquare.classList.contains("red")) {
+                if (wordToGuess.charAt(c)=== letter  && letterCount[letter] > 0) {
+                    currSquare.classList.add("red");
+                    letterCount[letter] -=1;
+                }  else {
+                    currSquare.classList.add("bg-stone-500");
+
+                }
             }
         }
     }
@@ -380,3 +407,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 })
+
+
+//     const keys = document.querySelectorAll(".keyboard-row button");
+//     // console.log(keys)
+//     const squares = document.querySelectorAll(".square");
+//     // console.log(squares);
+//     let rows = 5
+//     let start = 0
+//     const getKey = (e)=>{
+//         const keyName = e.key;
+//         console.log(`${keyName} is pressed`);
+//         if (keyName === 13) {
+//             start += 5
+//             rows += 5
+//         }
+//         // console.log(keyName, start, rows);
+//     }
+//    document.addEventListener('keydown', getKey)
+
+//    let fullWord = [];
+
+//    let prettyArr = [];
+
+//     for (let i = 0; i < keys.length; i++) {
+//         keys[i].onclick = ({target}) => {
+//             const letter = target.getAttribute("data-key");
+//             console.log(letter);
+//             fullWord = userword.push(letter);
+//             // squares[i].textContent = letter
+//             console.log(userword);
+
+//             // for (let j = start; j <rows;j++) {
+//             //     squares[j].textContent = userword[j]
+//             // }
+//             prettyArr = userword.slice(0,5).join("");
+//             console.log(prettyArr)
+//         }
+        
+//     }
+
+//     function checking() {
+//         if (prettyArr == wordToGuess) {
+//             alert("You won");
+//         }
+//     }
+//     checking();

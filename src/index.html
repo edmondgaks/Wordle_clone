@@ -11,15 +11,16 @@
     <div class="h-14 border-b-2 border-white pb-1">
       <h1 class="text-white text-2xl mx-80 px-60 translate-x-56 translate-y-5 font-black pb-2">Wordle</h1>
     </div>
+    <h1 id="answer" class="text-white font-bold"></h1>
     <div class="flex flex-col items-center">
       <div id="boxes" class="board-container grid grid-cols-5 gap-x-2 gap-y-2  text-white w-80 h-80 mt-10"></div>
 
-      <div id="keyboard-container" class="h-52 text-white translate-y-[150px] ">
+      <div id="keyboard-container" class="h-48 text-white translate-y-[150px] ">
         <div class="keyboard-row grid grid-flow-col gap-1 w-full touch-manipulation">
           <button data-key="q" class="font-bold border-white p-6 bg-stone-500">Q</button>
           <button data-key="w" class="font-bold  border-white p-6 bg-stone-500">w</button>
           <button data-key="e" class="font-bold  border-white p-6 bg-stone-500">E</button>
-          <button data-key="r" class="font-bold  border-white p-6 bg-stone-500">R</button>
+          <button data-key="r" class="font-bold  border-white p-6 bg-stone-500">R</button> 
           <button data-key="t" class="font-bold  border-white p-6 bg-stone-500">T</button>
           <button data-key="y" class="font-bold  border-white p-6 bg-stone-500">Y</button>
           <button data-key="u" class="font-bold  border-white p-6 bg-stone-500">U</button>
@@ -51,6 +52,8 @@
           <button data-key="del" class="wide-button font-bold  border-white p-6 bg-stone-500">Del</button>
         </div>
       </div>
+
+      
     </div>
   </div>
 
