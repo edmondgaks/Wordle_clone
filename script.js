@@ -391,8 +391,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         else if (e.code == "Enter") {
             update();
-            row += 1;
-            col = 0;
+            
         }
         if (!gameOver && row == height) {
             gameOver = true;
@@ -472,6 +471,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         }
+        row += 1;
+        col = 0;
     }
 
 
