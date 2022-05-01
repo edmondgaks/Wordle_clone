@@ -313,7 +313,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     
     const keys = document.querySelectorAll(".keyboard-row button");
-    console.log(keys)
+    console.log(keys);
     // const squares = document.querySelectorAll(".square");
     // console.log(squares);
 
@@ -325,14 +325,52 @@ document.addEventListener("DOMContentLoaded", () => {
             for (let j = 0; j < width; j++) {
                 let square = document.createElement("div");
                 square.id = i.toString() + "-"+ j.toString();
-                square.setAttribute("class", "text-white border white font-bold justify-center items-center");
+                square.setAttribute("class", "text-white border white font-bold justify-center items-center text-2xl text-center");
                 boxes.appendChild(square);
             }
         }
+        let keyboard = [
+            ["Q","W","E","R","T","Y","U","I","O","P"],
+            ["A","S","D","F","G","H","J","K","L",""],
+            ["Enter","Z","X","C","V","B","N","M","<"],
+        ]
+
+        for (let i=0;i <keyboard.length; i++) {
+            let currRow = keyboard[i];
+            let keyboardRow = document.createElement("div");
+            keyboardRow.classList.add("keyboard-row");
+
+            for (j=0;j<currRow.length; j++) {
+                let keyTile = document.createElement("div");
+                let key = currRow[j];
+                keyTile.innerText = key;
+                if (key == "Enter") {
+                    keyTile.id = "Enter";
+                } else if(key == "<") {
+                    keyTile.id = "Backspace";
+                } else if("A" <= key && key <= "Z") {
+                    keyTile.id = "Key"+ key;
+                }
+                keyTile.addEventListener("click", processKey);
+
+                if(key == "Enter") {
+                    keyTile.classList.add("enter-key-tile");
+                } else {
+                    keyTile.classList.add("key-tile");
+                }
+                keyboardRow.appendChild(keyTile);
+            }
+            document.body.appendChild(keyboardRow)
+        }
     }
+
     createSquares();
 
+
     document.addEventListener("keyup", (e) => {
+        processInput(e);
+    })
+    function processInput(e) {
         if (gameOver) return;
 
         if ("KeyA" <= e.code && e.code <= "KeyZ") {
@@ -360,9 +398,29 @@ document.addEventListener("DOMContentLoaded", () => {
             gameOver = true;
             document.getElementById("answer").innerText = wordToGuess;
         }
-    })
+    }
 
+    function processKey() {
+        let e = {"code": this.id};
+        processInput(e);
+    }
     function update() {
+
+        let guess = "";
+        
+        document.getElementById("answer").innerText = "";
+
+        for (let c=0; c<width; c++) {
+            let currTile = document.getElementById(row.toString()+ "-"+ c.toString());
+            let letter = currTile.innerText;
+            guess += letter;
+        }
+        guess = guess.toLowerCase();
+        if(!wordsToGuess.includes(guess)) {
+            document.getElementById("answer").innerText = "Not in Words list";
+            return;
+        } 
+ 
         let correct = 0;
         let letterCount = {};
         for (let i =0; i<wordToGuess.length; i++) {
@@ -373,27 +431,40 @@ document.addEventListener("DOMContentLoaded", () => {
                 letterCount[letter] = 1;
             }
         }
-        // first iteration, check all correct ones
+
         for (let c = 0; c <width;c++) {
             let currSquare = document.getElementById(row.toString() + "-"+c.toString());
+            console.log(currSquare)
             let letter = currSquare.innerText;
-            if (wordToGuess.charAt(c)=== letter) {
+            console.log(letter)
+            if (wordToGuess.charAt(c) == letter) {
                 currSquare.classList.add("red");
+                let keyTile = document.getElementById("Key"+ letter);
+                console.log(keyTile);
+                keyTile?.classList.remove("green") ;
+                keyTile?.classList.add("red");
                 correct +=1;
                 letterCount[letter] -= 1;
-            } 
+            } else if (wordToGuess.includes(letter)) {
+                // currSquare.classList.add("bg-yellow-500");
+                currSquare.classList.add("green");
+            }
             if (correct == width) {
                 gameOver = true;
             }
         }
 
-        // go again and mark which ones are present 
         for (let c = 0; c <width;c++) {
             let currSquare = document.getElementById(row.toString() + "-"+c.toString());
             let letter = currSquare.innerText;
             if(!currSquare.classList.contains("red")) {
                 if (wordToGuess.charAt(c)=== letter  && letterCount[letter] > 0) {
-                    currSquare.classList.add("red");
+                    currSquare.classList.add("green");
+                    let keyTile = document.getElementById("Key"+letter);
+                    if(!keyTile.classList.contains("red")) {
+                        keyTile.classList.add("green");
+                    }
+                    keyTile.classList.add("red");
                     letterCount[letter] -=1;
                 }  else {
                     currSquare.classList.add("bg-stone-500");
@@ -404,52 +475,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+    const localSt = JSON.stringify({wordToGuess});
+    window.localStorage.setItem('WordToGuess',localSt);
+
 
 
 })
-
-
-//     const keys = document.querySelectorAll(".keyboard-row button");
-//     // console.log(keys)
-//     const squares = document.querySelectorAll(".square");
-//     // console.log(squares);
-//     let rows = 5
-//     let start = 0
-//     const getKey = (e)=>{
-//         const keyName = e.key;
-//         console.log(`${keyName} is pressed`);
-//         if (keyName === 13) {
-//             start += 5
-//             rows += 5
-//         }
-//         // console.log(keyName, start, rows);
-//     }
-//    document.addEventListener('keydown', getKey)
-
-//    let fullWord = [];
-
-//    let prettyArr = [];
-
-//     for (let i = 0; i < keys.length; i++) {
-//         keys[i].onclick = ({target}) => {
-//             const letter = target.getAttribute("data-key");
-//             console.log(letter);
-//             fullWord = userword.push(letter);
-//             // squares[i].textContent = letter
-//             console.log(userword);
-
-//             // for (let j = start; j <rows;j++) {
-//             //     squares[j].textContent = userword[j]
-//             // }
-//             prettyArr = userword.slice(0,5).join("");
-//             console.log(prettyArr)
-//         }
-        
-//     }
-
-//     function checking() {
-//         if (prettyArr == wordToGuess) {
-//             alert("You won");
-//         }
-//     }
-//     checking();
