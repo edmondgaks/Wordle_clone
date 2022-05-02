@@ -438,6 +438,8 @@ document.addEventListener("DOMContentLoaded", () => {
             let currSquare = document.getElementById(row.toString() + "-"+c.toString());
             currSquare.setAttribute("class","animate__flipOutX text-white border white font-bold justify-center items-center text-2xl text-center");
             // console.log(currSquare)
+            const currSquareLocal = JSON.stringify({currSquare});
+            window.localStorage.setItem("CurrentSquare",currSquareLocal);
             let letter = currSquare.innerText;
             // console.log(letter)
             if (wordToGuess.charAt(c) == letter) {
@@ -445,13 +447,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 let keyTile = document.getElementById("Key"+ letter);
                 // console.log(keyTile);
                 keyTile?.classList.remove("green") ;
-                keyTile?.classList.add("red");
+                // keyTile?.classList.add("red");
+                keyTile.setAttribute("style","background-color: rgb(34 197 94);")
                 correct +=1;
                 letterCount[letter] -= 1;
             } else if (wordToGuess.includes(letter)) {
                 let keyTile = document.getElementById("Key"+ letter);
                 // console.log(keyTile)
-                keyTile?.classList.add("green");
+                // keyTile?.classList.add("green");
+                keyTile.setAttribute("style","background-color: rgb(245 158 11);")
                 // currSquare.classList.add("bg-yellow-500");
                 currSquare.classList.add("green");
             }
