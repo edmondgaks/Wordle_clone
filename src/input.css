@@ -9,6 +9,10 @@
     background-color: rgb(245 158 11);
 }
 .border{
-    border: 2px solid rgb(238, 235, 240);
+    border: 1px solid rgb(238, 235, 240);
     color: white;
+    /* background-color: rgb(120 113 108); */
+}
+.background-wanted {
+    background-color: rgb(225, 222, 220);
 }

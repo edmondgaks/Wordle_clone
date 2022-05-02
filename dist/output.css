@@ -497,16 +497,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 24rem;
 }
 
-.h-48 {
-  height: 12rem;
+.w-20 {
+  width: 5rem;
 }
 
 .w-96 {
   width: 24rem;
-}
-
-.w-full {
-  width: 100%;
 }
 
 .translate-x-56 {
@@ -519,19 +515,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.translate-y-\[150px\] {
-  --tw-translate-y: 150px;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.touch-manipulation {
-  touch-action: manipulation;
-}
-
-.grid-flow-col {
-  grid-auto-flow: column;
-}
-
 .grid-cols-5 {
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
@@ -542,10 +525,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .items-center {
   align-items: center;
-}
-
-.gap-1 {
-  gap: 0.25rem;
 }
 
 .gap-x-2 {
@@ -571,13 +550,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
-.bg-stone-500 {
+.bg-white {
   --tw-bg-opacity: 1;
-  background-color: rgb(120 113 108 / var(--tw-bg-opacity));
-}
-
-.p-6 {
-  padding: 1.5rem;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
 .px-60 {
@@ -624,6 +599,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .border{
-  border: 2px solid rgb(238, 235, 240);
+  border: 1px solid rgb(238, 235, 240);
   color: white;
+  /* background-color: rgb(120 113 108); */
+}
+
+.background-wanted {
+  background-color: rgb(225, 222, 220);
 }

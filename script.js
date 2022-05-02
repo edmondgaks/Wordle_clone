@@ -325,7 +325,7 @@ document.addEventListener("DOMContentLoaded", () => {
             for (let j = 0; j < width; j++) {
                 let square = document.createElement("div");
                 square.id = i.toString() + "-"+ j.toString();
-                square.setAttribute("class", "text-white border white font-bold justify-center items-center text-2xl text-center");
+                square.setAttribute("class", "text-white border white font-bold h-32 justify-center items-center text-2xl text-center");
                 boxes.appendChild(square);
             }
         }
@@ -343,6 +343,7 @@ document.addEventListener("DOMContentLoaded", () => {
             for (j=0;j<currRow.length; j++) {
                 let keyTile = document.createElement("div");
                 let key = currRow[j];
+                // key.classList.add("background-wanted");
                 keyTile.innerText = key;
                 if (key == "Enter") {
                     keyTile.id = "Enter";
@@ -390,6 +391,8 @@ document.addEventListener("DOMContentLoaded", () => {
             currSquare.innerText = "";
         }
         else if (e.code == "Enter") {
+            // let currSquare = document.getElementById(row.toString() + "-"+col.toString());
+            // console.log(currSquare);
             update();
             
         }
@@ -433,18 +436,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
         for (let c = 0; c <width;c++) {
             let currSquare = document.getElementById(row.toString() + "-"+c.toString());
-            console.log(currSquare)
+            currSquare.setAttribute("class","animate__flipOutX text-white border white font-bold justify-center items-center text-2xl text-center");
+            // console.log(currSquare)
             let letter = currSquare.innerText;
-            console.log(letter)
+            // console.log(letter)
             if (wordToGuess.charAt(c) == letter) {
                 currSquare.classList.add("red");
                 let keyTile = document.getElementById("Key"+ letter);
-                console.log(keyTile);
+                // console.log(keyTile);
                 keyTile?.classList.remove("green") ;
                 keyTile?.classList.add("red");
                 correct +=1;
                 letterCount[letter] -= 1;
             } else if (wordToGuess.includes(letter)) {
+                let keyTile = document.getElementById("Key"+ letter);
+                // console.log(keyTile)
+                keyTile?.classList.add("green");
                 // currSquare.classList.add("bg-yellow-500");
                 currSquare.classList.add("green");
             }
